@@ -29,10 +29,20 @@
     #downloadBtn:enabled:hover {
       background-color: #0056b3;
     }
+    .ad-container {
+      margin: 10px auto;
+    }
+    #banner-ad {
+      width: 240px;
+      height: 100px;
+      background-color: #ddd;
+      margin-bottom: 10px;
+    }
   </style>
   <script>
+    // Countdown for the download button
     function startCountdown() {
-      var countdown = 60;
+      var countdown = 60; // 60-second countdown
       var downloadButton = document.getElementById("downloadBtn");
       var timer = setInterval(function() {
         if (countdown === 0) {
@@ -50,153 +60,72 @@
       }, 1000);
     }
 
+    // Ad setup on page load
     window.onload = function() {
-      startCountdown();
+      startCountdown(); // Start the countdown for the download button
+      loadAds(); // Load the 6 ads when the page loads
     }
+
+    // Function to load the ads
+    function loadAds() {
+      for (let i = 1; i <= 6; i++) {
+        let adContainer = document.createElement('div');
+        adContainer.id = 'ad-container' + i;
+        adContainer.className = 'ad-container';
+        document.body.appendChild(adContainer);
+
+        getKaiAd({
+          publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+          app: 'urdu_jokes',
+          slot: 'urdu_jokes_slot',
+          h: 264,
+          w: 240,
+          container: adContainer,
+          onerror: err => console.error('Custom catch:', err),
+          onready: ad => {
+            ad.call('display', {
+              tabindex: 0,
+              navClass: 'items',
+              display: 'block',
+            });
+          }
+        });
+      }
+    }
+
+    // Request the banner ad once DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      getKaiAd({
+        publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+        app: 'urdu_jokes',
+        slot: 'urdu_jokes_slot',
+        h: 100,
+        w: 240,
+        container: document.getElementById('banner-ad'),
+        onerror: err => console.error('Custom catch:', err),
+        onready: ad => {
+          ad.call('display', {
+            tabindex: 0,
+            navClass: 'items',
+            display: 'block',
+          });
+        }
+      });
+    });
   </script>
 </head>
 <body>
   <h1>Download Telegram</h1>
 
+  <!-- Banner Ad Container -->
+  <div id="banner-ad"></div>
+
   <!-- Download button -->
-  <button id="downloadBtn" disabled>Wait 30 seconds to download</button>
-<script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+  <button id="downloadBtn" disabled>Wait 60 seconds to download</button>
 
-
-<div id='ad-container'></div>
-
-
-<script>
+  <!-- Ad Containers (6 ads will be dynamically added) -->
   
-  
-  getKaiAd({
-	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
-	app: 'urdu_jokes',
-	slot: 'urdu_jokes_slot',
-	
-	h: 264,
-	w: 240,
-
-	// Max supported size is 240x264
-	// container is required for responsive ads
-	container: document.getElementById('ad-container'),
-	onerror: err => console.error('Custom catch:', err),
-	onready: ad => {
-
-		// Ad is ready to be displayed
-		// calling 'display' will display the ad
-		ad.call('display', {
-
-			// In KaiOS the app developer is responsible
-			// for user navigation, and can provide
-			// navigational className and/or a tabindex
-			tabindex: 0,
-
-			// if the application is using
-			// a classname to navigate
-			// this classname will be applied
-			// to the container
-			navClass: 'items',
-
-			// display style will be applied
-			// to the container block or inline-block
-			display: 'block',
-		})
-	}
-})
-  
-  </script>
-
-</body><script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
-
-
-<div id='ad-container2'></div>
-
-
-<script>
-  
-  
-  getKaiAd({
-	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
-	app: 'urdu_jokes',
-	slot: 'urdu_jokes_slot',
-	
-	h: 264,
-	w: 240,
-
-	// Max supported size is 240x264
-	// container is required for responsive ads
-	container: document.getElementById('ad-container2'),
-	onerror: err => console.error('Custom catch:', err),
-	onready: ad => {
-
-		// Ad is ready to be displayed
-		// calling 'display' will display the ad
-		ad.call('display', {
-
-			// In KaiOS the app developer is responsible
-			// for user navigation, and can provide
-			// navigational className and/or a tabindex
-			tabindex: 0,
-
-			// if the application is using
-			// a classname to navigate
-			// this classname will be applied
-			// to the container
-			navClass: 'items',
-
-			// display style will be applied
-			// to the container block or inline-block
-			display: 'block',
-		})
-	}
-})
-  
-  </script>
-<script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
-
-
-<div id='ad-container3'></div>
-
-
-<script>
-  
-  
-  getKaiAd({
-	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
-	app: 'urdu_jokes',
-	slot: 'urdu_jokes_slot',
-	
-	h: 264,
-	w: 240,
-
-	// Max supported size is 240x264
-	// container is required for responsive ads
-	container: document.getElementById('ad-container3'),
-	onerror: err => console.error('Custom catch:', err),
-	onready: ad => {
-
-		// Ad is ready to be displayed
-		// calling 'display' will display the ad
-		ad.call('display', {
-
-			// In KaiOS the app developer is responsible
-			// for user navigation, and can provide
-			// navigational className and/or a tabindex
-			tabindex: 0,
-
-			// if the application is using
-			// a classname to navigate
-			// this classname will be applied
-			// to the container
-			navClass: 'items',
-
-			// display style will be applied
-			// to the container block or inline-block
-			display: 'block',
-		})
-	}
-})
-  
-  </script>
+  <!-- Kai Ads SDK -->
+  <script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+</body>
 </html>
