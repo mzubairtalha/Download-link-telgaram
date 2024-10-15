@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Download</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      color: #333;
+    }
+    #downloadBtn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: not-allowed;
+    }
+    #downloadBtn:enabled {
+      cursor: pointer;
+      background-color: #007bff;
+    }
+    #downloadBtn:enabled:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    function startCountdown() {
+      var countdown = 30;
+      var downloadButton = document.getElementById("downloadBtn");
+      var timer = setInterval(function() {
+        if (countdown === 0) {
+          clearInterval(timer);
+          downloadButton.innerHTML = "Download Now";
+          downloadButton.disabled = false;
+          downloadButton.onclick = function() {
+            window.location.href = "https://raw.githubusercontent.com/cyan-2048/_store/main/arma7x/telekram/telekram.zip";
+          };
+        } else {
+          downloadButton.innerHTML = "Wait " + countdown + " seconds to download";
+          downloadButton.disabled = true;
+        }
+        countdown--;
+      }, 1000);
+    }
+
+    window.onload = function() {
+      startCountdown();
+    }
+  </script>
+</head>
+<body>
+  <h1>Download Telegram</h1>
+
+  <!-- Download button -->
+  <button id="downloadBtn" disabled>Wait 30 seconds to download</button>
+<script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+
+
+<div id='ad-container'></div>
+
+
+<script>
+  
+  
+  getKaiAd({
+	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+	app: 'urdu_jokes',
+	slot: 'urdu_jokes_slot',
+	
+	h: 264,
+	w: 240,
+
+	// Max supported size is 240x264
+	// container is required for responsive ads
+	container: document.getElementById('ad-container'),
+	onerror: err => console.error('Custom catch:', err),
+	onready: ad => {
+
+		// Ad is ready to be displayed
+		// calling 'display' will display the ad
+		ad.call('display', {
+
+			// In KaiOS the app developer is responsible
+			// for user navigation, and can provide
+			// navigational className and/or a tabindex
+			tabindex: 0,
+
+			// if the application is using
+			// a classname to navigate
+			// this classname will be applied
+			// to the container
+			navClass: 'items',
+
+			// display style will be applied
+			// to the container block or inline-block
+			display: 'block',
+		})
+	}
+})
+  
+  </script>
+
+</body><script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+
+
+<div id='ad-container2'></div>
+
+
+<script>
+  
+  
+  getKaiAd({
+	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+	app: 'urdu_jokes',
+	slot: 'urdu_jokes_slot',
+	
+	h: 264,
+	w: 240,
+
+	// Max supported size is 240x264
+	// container is required for responsive ads
+	container: document.getElementById('ad-container2'),
+	onerror: err => console.error('Custom catch:', err),
+	onready: ad => {
+
+		// Ad is ready to be displayed
+		// calling 'display' will display the ad
+		ad.call('display', {
+
+			// In KaiOS the app developer is responsible
+			// for user navigation, and can provide
+			// navigational className and/or a tabindex
+			tabindex: 0,
+
+			// if the application is using
+			// a classname to navigate
+			// this classname will be applied
+			// to the container
+			navClass: 'items',
+
+			// display style will be applied
+			// to the container block or inline-block
+			display: 'block',
+		})
+	}
+})
+  
+  </script>
+<script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+
+
+<div id='ad-container3'></div>
+
+
+<script>
+  
+  
+  getKaiAd({
+	publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+	app: 'urdu_jokes',
+	slot: 'urdu_jokes_slot',
+	
+	h: 264,
+	w: 240,
+
+	// Max supported size is 240x264
+	// container is required for responsive ads
+	container: document.getElementById('ad-container3'),
+	onerror: err => console.error('Custom catch:', err),
+	onready: ad => {
+
+		// Ad is ready to be displayed
+		// calling 'display' will display the ad
+		ad.call('display', {
+
+			// In KaiOS the app developer is responsible
+			// for user navigation, and can provide
+			// navigational className and/or a tabindex
+			tabindex: 0,
+
+			// if the application is using
+			// a classname to navigate
+			// this classname will be applied
+			// to the container
+			navClass: 'items',
+
+			// display style will be applied
+			// to the container block or inline-block
+			display: 'block',
+		})
+	}
+})
+  
+  </script>
+</html>
