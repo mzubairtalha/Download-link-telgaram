@@ -32,7 +32,7 @@
     .ad-container {
       margin: 10px auto;
     }
-    #banner-ad {
+    .banner-ad {
       width: 240px;
       height: 100px;
       background-color: #ddd;
@@ -64,9 +64,11 @@
     window.onload = function() {
       startCountdown(); // Start the countdown for the download button
       loadAds(); // Load the 6 ads when the page loads
+      loadBannerAds(); // Load the 2 banner ads when the page loads
+      loadAdditionalAds(); // Load 2 additional ads (above and below the download button)
     }
 
-    // Function to load the ads
+    // Function to load the 6 regular ads
     function loadAds() {
       for (let i = 1; i <= 6; i++) {
         let adContainer = document.createElement('div');
@@ -77,7 +79,7 @@
         getKaiAd({
           publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
           app: 'urdu_jokes',
-          slot: 'urdu_jokes_slot',
+          slot: 'urdu_jokes_slot_' + i, // Unique slot per ad container
           h: 264,
           w: 240,
           container: adContainer,
@@ -93,15 +95,48 @@
       }
     }
 
-    // Request the banner ad once DOM is fully loaded
-    document.addEventListener("DOMContentLoaded", () => {
+    // Function to load the 2 banner ads
+    function loadBannerAds() {
+      for (let i = 1; i <= 2; i++) {
+        let bannerAdContainer = document.createElement('div');
+        bannerAdContainer.id = 'banner-ad-container' + i;
+        bannerAdContainer.className = 'banner-ad';
+        document.body.appendChild(bannerAdContainer);
+
+        getKaiAd({
+          publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+          app: 'urdu_jokes',
+          slot: 'urdu_jokes_banner_slot_' + i, // Unique slot per banner ad
+          h: 100,
+          w: 240,
+          container: bannerAdContainer,
+          onerror: err => console.error('Custom catch:', err),
+          onready: ad => {
+            ad.call('display', {
+              tabindex: 0,
+              navClass: 'items',
+              display: 'block',
+            });
+          }
+        });
+      }
+    }
+
+    // Function to load 2 additional ads (above and below the download button)
+    function loadAdditionalAds() {
+      // Ad above the download button
+      let topAdContainer = document.createElement('div');
+      topAdContainer.id = 'top-ad-container';
+      topAdContainer.className = 'ad-container';
+      document.body.insertBefore(topAdContainer, document.getElementById("downloadBtn"));
+
       getKaiAd({
         publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
         app: 'urdu_jokes',
-        slot: 'urdu_jokes_slot',
-        h: 100,
+        slot: 'urdu_jokes_top_slot',
+        h: 264,
         w: 240,
-        container: document.getElementById('banner-ad'),
+        container: topAdContainer,
         onerror: err => console.error('Custom catch:', err),
         onready: ad => {
           ad.call('display', {
@@ -111,21 +146,51 @@
           });
         }
       });
-    });
+
+      // Ad below the download button
+      let bottomAdContainer = document.createElement('div');
+      bottomAdContainer.id = 'bottom-ad-container';
+      bottomAdContainer.className = 'ad-container';
+      document.body.appendChild(bottomAdContainer);
+
+      getKaiAd({
+        publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+        app: 'urdu_jokes',
+        slot: 'urdu_jokes_bottom_slot',
+        h: 264,
+        w: 240,
+        container: bottomAdContainer,
+        onerror: err => console.error('Custom catch:', err),
+        onready: ad => {
+          ad.call('display', {
+            tabindex: 0,
+            navClass: 'items',
+            display: 'block',
+          });
+        }
+      });
+    }
   </script>
 </head>
 <body>
   <h1>Download Telegram</h1>
 
-  <!-- Banner Ad Container -->
-  <div id="banner-ad"></div>
+  <!-- Banner Ad Containers -->
+  <div id="banner-ad-container1" class="banner-ad"></div>
+  <div id="banner-ad-container2" class="banner-ad"></div>
 
+  <!-- Ad Container Above the Download Button (Additional Ad) -->
+  <div id="top-ad-container" class="ad-container"></div>
+<div id="bottom-ad-container" class="ad-container"></div>
   <!-- Download button -->
   <button id="downloadBtn" disabled>Wait 60 seconds to download</button>
 
-  <!-- Ad Containers (6 ads will be dynamically added) -->
-  
+  <!-- Ad Containers for Regular Ads (6 ads will be dynamically added) -->
+
   <!-- Kai Ads SDK -->
   <script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+  
+  <!-- Ad Container Below the Download Button (Additional Ad) -->
+  
 </body>
 </html>
