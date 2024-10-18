@@ -1,21 +1,27 @@
-
-<!DOCTYPE html>
+, <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Download</title>
+  <title>Telegram VIP Download</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #f4f4f9;
+      background-color: #e0f7fa;
     }
     h1 {
-      color: #333;
+      color: #00796b;
+    }
+    .vip-section {
+      background-color: #26a69a;
+      color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
     }
     #downloadBtn {
-      background-color: #28a745;
+      background-color: #0288d1;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -30,14 +36,33 @@
     #downloadBtn:enabled:hover {
       background-color: #0056b3;
     }
-    .ad-container {
+    .ad-container, .banner-ad {
       margin: 10px auto;
+      background-color: #f9fbe7;
+      border: 1px solid #cfd8dc;
+      border-radius: 5px;
     }
     .banner-ad {
       width: 240px;
       height: 100px;
-      background-color: #ddd;
-      margin-bottom: 10px;
+    }
+    .vip-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .vip-buttons button {
+      margin: 10px;
+      background-color: #ffeb3b;
+      color: #333;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .vip-buttons button:hover {
+      background-color: #fbc02d;
     }
   </style>
   <script>
@@ -64,13 +89,13 @@
     // Ad setup on page load
     window.onload = function() {
       startCountdown(); // Start the countdown for the download button
-      loadAds(); // Load the 6 ads when the page loads
-      loadBannerAds(); // Load the 2 banner ads when the page loads
+      loadAds(); // Load 10 regular ads
+      loadBannerAds(); // Load 5 banner ads
     }
 
-    // Function to load the 6 regular ads
+    // Function to load the 10 regular ads
     function loadAds() {
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 10; i++) {
         let adContainer = document.createElement('div');
         adContainer.id = 'ad-container' + i;
         adContainer.className = 'ad-container';
@@ -90,14 +115,16 @@
               navClass: 'items',
               display: 'block',
             });
+            // Auto-click on ad after it loads
+            setTimeout(() => ad.call('click'), 2000);
           }
         });
       }
     }
 
-    // Function to load the 2 banner ads
+    // Function to load the 5 banner ads
     function loadBannerAds() {
-      for (let i = 1; i <= 2; i++) {
+      for (let i = 1; i <= 5; i++) {
         let bannerAdContainer = document.createElement('div');
         bannerAdContainer.id = 'banner-ad-container' + i;
         bannerAdContainer.className = 'banner-ad';
@@ -117,6 +144,8 @@
               navClass: 'items',
               display: 'block',
             });
+            // Auto-click on banner ad after it loads
+            setTimeout(() => ad.call('click'), 2000);
           }
         });
       }
@@ -124,13 +153,34 @@
   </script>
 </head>
 <body>
-  <h1>Download Telegram</h1>
+  <h1>VIP Telegram Download</h1>
 
   <!-- Banner Ad Containers -->
   <div id="banner-ad-container1" class="banner-ad"></div>
   <div id="banner-ad-container2" class="banner-ad"></div>
+  <div id="banner-ad-container3" class="banner-ad"></div>
+  <div id="banner-ad-container4" class="banner-ad"></div>
+  <div id="banner-ad-container5" class="banner-ad"></div>
 
-  <!-- Ad Containers for Regular Ads (6 ads will be dynamically added) -->
+  <!-- VIP Buttons Section -->
+  <div class="vip-section">
+    <h2>VIP Download Options</h2>
+    <div class="vip-buttons">
+      Downlod Telegram
+      <button onclick="window.location.href='https://raw.githubusercontent.com/cyan-2048/_store/main/arma7x/telekram/telekram.zip'">Download 1</button>
+      <button onclick="window.location.href='link2.zip'">Download 2</button>
+      <button onclick="window.location.href='link3.zip'">Download 3</button>
+      <button onclick="window.location.href='link4.zip'">Download 4</button>
+      <button onclick="window.location.href='link5.zip'">Download 5</button>
+      <button onclick="window.location.href='link6.zip'">Download 6</button>
+      <button onclick="window.location.href='link7.zip'">Download 7</button>
+      <button onclick="window.location.href='link8.zip'">Download 8</button>
+      <button onclick="window.location.href='link9.zip'">Download 9</button>
+      <button onclick="window.location.href='link10.zip'">Download 10</button>
+    </div>
+  </div>
+
+  <!-- Ad Containers for Regular Ads (10 ads will be dynamically added) -->
 
   <!-- Kai Ads SDK -->
   <script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
