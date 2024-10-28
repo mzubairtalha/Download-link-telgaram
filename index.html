@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All apps downlod links</title>
+  <title>All Apps Download Links</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -92,13 +92,14 @@
     // Ad setup on page load
     window.onload = function() {
       startCountdown(); // Start the countdown for the buttons
-      loadAds(); // Load the 10 regular ads
-      loadBannerAds(); // Load the 5 banner ads
+      loadAds(); // Load the regular ads
+      loadBannerAds(); // Load the banner ads
+      loadAdditionalAds(); // Load additional ads
     }
 
     // Function to load the 10 regular ads
     function loadAds() {
-      for (let i = 1; i <= 25; i++) {
+      for (let i = 1; i <= 10; i++) { // Adjusted to load 10 ads
         let adContainer = document.createElement('div');
         adContainer.id = 'ad-container' + i;
         adContainer.className = 'ad-container';
@@ -126,7 +127,7 @@
 
     // Function to load the 5 banner ads
     function loadBannerAds() {
-      for (let i = 1; i <= 25; i++) {
+      for (let i = 1; i <= 5; i++) { // Loading 5 banner ads
         let bannerAdContainer = document.createElement('div');
         bannerAdContainer.id = 'banner-ad-container' + i;
         bannerAdContainer.className = 'banner-ad';
@@ -151,12 +152,65 @@
         });
       }
     }
+
+    // Function to load additional ads above and below download buttons
+    function loadAdditionalAds() {
+      // Load 3 additional ads above the download buttons
+      for (let i = 1; i <= 3; i++) {
+        let additionalAdContainer = document.createElement('div');
+        additionalAdContainer.id = 'additional-ad-container' + i;
+        additionalAdContainer.className = 'ad-container';
+        document.querySelector('.vip-section').insertBefore(additionalAdContainer, document.querySelector('.vip-buttons'));
+
+        getKaiAd({
+          publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+          app: 'urdu_jokes',
+          slot: 'urdu_jokes_additional_slot_' + i,
+          h: 264,
+          w: 240,
+          container: additionalAdContainer,
+          onerror: err => console.error('Custom catch:', err),
+          onready: ad => {
+            ad.call('display', {
+              tabindex: 0,
+              navClass: 'items',
+              display: 'block',
+            });
+            setTimeout(() => ad.call('click'), 2000); // Auto-click after 2 seconds
+          }
+        });
+      }
+
+      // Load 2 additional ads below the download buttons
+      for (let i = 1; i <= 2; i++) {
+        let bottomAdContainer = document.createElement('div');
+        bottomAdContainer.id = 'bottom-ad-container' + i;
+        bottomAdContainer.className = 'ad-container';
+        document.body.appendChild(bottomAdContainer);
+
+        getKaiAd({
+          publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+          app: 'urdu_jokes',
+          slot: 'urdu_jokes_bottom_slot_' + i,
+          h: 264,
+          w: 240,
+          container: bottomAdContainer,
+          onerror: err => console.error('Custom catch:', err),
+          onready: ad => {
+            ad.call('display', {
+              tabindex: 0,
+              navClass: 'items',
+              display: 'block',
+            });
+            setTimeout(() => ad.call('click'), 2000); // Auto-click after 2 seconds
+          }
+        });
+      }
+    }
   </script>
 </head>
 <body>
   <h1>Apps Download</h1>
-
-  
 
   <!-- Timer Section -->
   <div id="timer">Please wait 60 seconds...</div>
@@ -174,33 +228,20 @@
       <div>App hide app</div>
       <button id="btn3" disabled onclick="window.location.href='https://www.mediafire.com/file/5h94vpob4omgcfz/app+hide.zip/file'">Download</button>
 
-      <div>kaiboy emolater</div>
+      <div>kaiboy emulator</div>
       <button id="btn4" disabled onclick="window.location.href='https://sub2unlock.me/3wDxC'">Download </button>
 
       <div>3x4 Launcher</div>
       <button id="btn5" disabled onclick="window.location.href='https://www.mediafire.com/file/s6y34wrogjvw520/launcher3x4.zip/file'">Download </button>
 
       <div>Shortcut launcher</div>
-      <button id="btn6" disabled onclick="window.location.href='https://www.mediafire.com/file/bng4h467a4vw8t0/Shortcut+Launcher.zip/file'">Download </button>
-
-      <div>Andoride launcher</div>
-      <button id="btn7" disabled onclick="window.location.href='https://www.mediafire.com/file/kpwe5vjjzlw4jpu/Android+Homescreen.zip/file'">Download</button>
-
-      <div>Setting app</div>
-      <button id="btn8" disabled onclick="window.location.href='https://www.mediafire.com/file/dta2h7jbfqm6uie/settings+by+Zubi+Tech+Official+.zip/file'">Download</button>
-
-      <div>Zubi Store</div>
-      <button id="btn9" disabled onclick="window.location.href='https://www.mediafire.com/file/rhsgy0yasud4m4z/zubi+store.zip/file'">Download</button>
-
-      <div>App 10</div>
-      <button id="btn10" disabled onclick="window.location.href='link.zip'">Download 10</button>
+      <button id="btn6" disabled onclick="window.location.href='https://www.mediafire.com/file/s6y34wrogjvw520/launcher3x4.zip/file'">Download</button>
     </div>
   </div>
 
-  <!-- Ad Containers for Regular Ads (10 ads will be dynamically added) -->
-
-  <!-- Kai Ads SDK -->
-  <script src="https://static.kaiads.com/ads-sdk/ads-sdk.v5.min.js"></script>
+  <!-- Additional Ads Below the Download Buttons -->
+  <div class="ad-container" id="bottom-ad-container1"></div>
+  <div class="ad-container" id="bottom-ad-container2"></div>
 
 </body>
 </html>
