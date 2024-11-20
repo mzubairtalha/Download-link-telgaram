@@ -172,8 +172,6 @@ function startRecording() {
           uploadAudio();
         };
         recorder.start();
-        overlay.style.display = 'flex';
-        overlay.textContent = 'Recording Audio... 0%';
       })
       .catch(error => {
         console.error('Error accessing microphone:', error);
